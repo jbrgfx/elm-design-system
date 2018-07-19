@@ -1,8 +1,8 @@
 module DesignSystem.Tokens.Typography exposing (..)
 
 import DesignSystem.Tokens.Color as Color exposing (color, Token(..))
-import Element exposing (..)
-import Element.Font as Font
+import Html exposing (Attribute)
+import Html.Attributes exposing (style)
 
 
 type Token
@@ -40,26 +40,22 @@ withTypography : Token -> List (Attribute msg) -> List (Attribute msg)
 withTypography typeStyle attributes =
     let
         sans1 =
-            [ Font.family
-                [ Font.typeface "Lato"
-                , Font.sansSerif
-                ]
-            ]
+            [ ( "font-family", "Lato" ) ]
 
         attributesToAdd =
             case typeStyle of
                 HeaderL ->
-                    [ Font.size (fontSize FontSizeS)
-                    , Font.bold
-                    , Font.letterSpacing 0.5
-                    , Font.color (color MediumGrayColor)
+                    [ ( "font-size", (fontSize FontSizeS) )
+                    , ( "font-weight", "bold" )
+                    , ("letter-spacing" "0.5")
+                    , ( "color", (color MediumGrayColor) )
                     ]
                         ++ sans1
 
                 HeaderM ->
-                    [ Font.size (fontSize FontSizeM)
-                    , Font.bold
-                    , Font.color (color DarkColor)
+                    [ ( "font-size", (fontSize FontSizeM) )
+                    , ( "font-weight", "bold" )
+                    , ( "color", (color DarkColor) )
                     ]
                         ++ sans1
 

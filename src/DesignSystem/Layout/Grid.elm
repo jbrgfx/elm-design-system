@@ -1,13 +1,12 @@
 module DesignSystem.Layout.Grid exposing (..)
 
-import Html
+import Html exposing (Html, div)
 import Html.Attributes
 import DesignSystem.Tokens.Space as Space exposing (space, Token(..))
-import Element exposing (..)
 import List.Extra
 
 
-grid : Int -> Int -> Int -> List (Element msg) -> Element msg
+grid : Int -> Int -> Int -> List (Html msg) -> Html msg
 grid numPerRow spacingX spacingY items =
     let
         gridTemplateColumns =
@@ -20,13 +19,9 @@ grid numPerRow spacingX spacingY items =
             (toString spacingY) ++ "px"
 
         griddedItems =
-            List.map
-                (el
-                    []
-                )
-                items
+            List.map (\i -> div [] [ i ]) items
     in
-        row
+        div
             [ (Html.Attributes.style
                 [ ( "display", "grid" )
                 , ( "grid-template-columns", gridTemplateColumns )
@@ -35,6 +30,5 @@ grid numPerRow spacingX spacingY items =
                 , ( "grid-column-gap", gridColumnGap )
                 ]
               )
-                |> htmlAttribute
             ]
             griddedItems
