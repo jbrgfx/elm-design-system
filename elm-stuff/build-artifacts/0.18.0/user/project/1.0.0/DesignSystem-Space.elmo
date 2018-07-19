@@ -1,0 +1,20 @@
+var _user$project$DesignSystem_Space$space = function (spaceToken) {
+	var _p0 = spaceToken;
+	switch (_p0.ctor) {
+		case 'SpaceXS':
+			return 4;
+		case 'SpaceS':
+			return 8;
+		case 'SpaceM':
+			return 16;
+		case 'SpaceL':
+			return 32;
+		default:
+			return 64;
+	}
+};
+var _user$project$DesignSystem_Space$SpaceXL = {ctor: 'SpaceXL'};
+var _user$project$DesignSystem_Space$SpaceL = {ctor: 'SpaceL'};
+var _user$project$DesignSystem_Space$SpaceM = {ctor: 'SpaceM'};
+var _user$project$DesignSystem_Space$SpaceS = {ctor: 'SpaceS'};
+var _user$project$DesignSystem_Space$SpaceXS = {ctor: 'SpaceXS'};

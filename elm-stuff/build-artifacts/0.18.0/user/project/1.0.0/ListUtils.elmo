@@ -1,0 +1,63 @@
+var _user$project$ListUtils$map2 = F3(
+	function (fn, aList, bList) {
+		var _p0 = {ctor: '_Tuple2', _0: aList, _1: bList};
+		if (_p0._0.ctor === '[]') {
+			if (_p0._1.ctor === '[]') {
+				return {ctor: '[]'};
+			} else {
+				return {ctor: '[]'};
+			}
+		} else {
+			if (_p0._1.ctor === '[]') {
+				return {ctor: '[]'};
+			} else {
+				return {
+					ctor: '::',
+					_0: A2(fn, _p0._0._0, _p0._1._0),
+					_1: A3(_user$project$ListUtils$map2, fn, _p0._0._1, _p0._1._1)
+				};
+			}
+		}
+	});
+var _user$project$ListUtils$map = F2(
+	function (fn, list) {
+		var _p1 = list;
+		if (_p1.ctor === '[]') {
+			return {ctor: '[]'};
+		} else {
+			return {
+				ctor: '::',
+				_0: fn(_p1._0),
+				_1: A2(_user$project$ListUtils$map, fn, _p1._1)
+			};
+		}
+	});
+var _user$project$ListUtils$rangeHelp = F4(
+	function (start, end, delta, list) {
+		rangeHelp:
+		while (true) {
+			if (_elm_lang$core$Native_Utils.eq(start, end)) {
+				return {ctor: '::', _0: start, _1: list};
+			} else {
+				var _v2 = start + delta,
+					_v3 = end,
+					_v4 = delta,
+					_v5 = list;
+				start = _v2;
+				end = _v3;
+				delta = _v4;
+				list = _v5;
+				continue rangeHelp;
+			}
+		}
+	});
+var _user$project$ListUtils$range = F2(
+	function (start, end) {
+		var delta = (_elm_lang$core$Native_Utils.cmp(start, end) < 1) ? 1 : -1;
+		return A4(
+			_user$project$ListUtils$rangeHelp,
+			start,
+			end,
+			delta,
+			{ctor: '[]'});
+	});

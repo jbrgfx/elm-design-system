@@ -1,0 +1,30 @@
+var _user$project$Anagram$count = F2(
+	function (list, $char) {
+		return A3(
+			_elm_lang$core$List$foldl,
+			F2(
+				function (c, accum) {
+					return A2(_elm_lang$core$List$member, c, list) ? 1 : 0;
+				}),
+			0,
+			list);
+	});
+var _user$project$Anagram$allLetters = _elm_lang$core$String$toList('abcdefghijklmnopqrstuvwxyz');
+var _user$project$Anagram$deletionsNeeded = F2(
+	function (stringA, stringB) {
+		var _p0 = {
+			ctor: '_Tuple2',
+			_0: _elm_lang$core$String$toList(stringA),
+			_1: _elm_lang$core$String$toList(stringB)
+		};
+		var listA = _p0._0;
+		var listB = _p0._1;
+		return A3(
+			_elm_lang$core$List$foldl,
+			F2(
+				function ($char, n) {
+					return A2(_user$project$Anagram$count, listA, $char);
+				}),
+			0,
+			_user$project$Anagram$allLetters);
+	});

@@ -1,0 +1,64 @@
+var _user$project$PrefixCompression$removePrefixHelp = F3(
+	function (accumulator, prefix, string) {
+		removePrefixHelp:
+		while (true) {
+			var firstCharOfString = A2(_elm_lang$core$String$left, 1, string);
+			var firstCharOfPrefix = A2(_elm_lang$core$String$left, 1, prefix);
+			var _p0 = firstCharOfString;
+			if (_p0 === '') {
+				return accumulator;
+			} else {
+				var newAccumulator = (!_elm_lang$core$Native_Utils.eq(firstCharOfPrefix, firstCharOfString)) ? A2(_elm_lang$core$Basics_ops['++'], accumulator, firstCharOfString) : accumulator;
+				var _v1 = newAccumulator,
+					_v2 = A2(_elm_lang$core$String$dropLeft, 1, prefix),
+					_v3 = A2(_elm_lang$core$String$dropLeft, 1, string);
+				accumulator = _v1;
+				prefix = _v2;
+				string = _v3;
+				continue removePrefixHelp;
+			}
+		}
+	});
+var _user$project$PrefixCompression$findPrefixHelp = F3(
+	function (accumulator, string1, string2) {
+		findPrefixHelp:
+		while (true) {
+			var firstSubString = A2(_elm_lang$core$String$left, 1, string1);
+			var _p1 = firstSubString;
+			if (_p1 === '') {
+				return accumulator;
+			} else {
+				if (_elm_lang$core$Native_Utils.eq(
+					firstSubString,
+					A2(_elm_lang$core$String$left, 1, string2))) {
+					var _v5 = A2(_elm_lang$core$Basics_ops['++'], accumulator, firstSubString),
+						_v6 = A2(_elm_lang$core$String$dropLeft, 1, string1),
+						_v7 = A2(_elm_lang$core$String$dropLeft, 1, string2);
+					accumulator = _v5;
+					string1 = _v6;
+					string2 = _v7;
+					continue findPrefixHelp;
+				} else {
+					return accumulator;
+				}
+			}
+		}
+	});
+var _user$project$PrefixCompression$removePrefix = F2(
+	function (toRemove, string) {
+		return A3(_user$project$PrefixCompression$removePrefixHelp, '', toRemove, string);
+	});
+var _user$project$PrefixCompression$findPrefix = F2(
+	function (string1, string2) {
+		return A3(_user$project$PrefixCompression$findPrefixHelp, '', string1, string2);
+	});
+var _user$project$PrefixCompression$compress = F2(
+	function (x, y) {
+		var prefix = A2(_user$project$PrefixCompression$findPrefix, x, y);
+		return {
+			ctor: '_Tuple3',
+			_0: prefix,
+			_1: A2(_user$project$PrefixCompression$removePrefix, prefix, x),
+			_2: A2(_user$project$PrefixCompression$removePrefix, prefix, y)
+		};
+	});

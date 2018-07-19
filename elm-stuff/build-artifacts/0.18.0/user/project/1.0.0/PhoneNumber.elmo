@@ -1,0 +1,252 @@
+var _user$project$PhoneNumber$intToString = function ($int) {
+	var _p0 = $int;
+	switch (_p0) {
+		case 0:
+			return '0';
+		case 1:
+			return '1';
+		case 2:
+			return '2';
+		case 3:
+			return '3';
+		case 4:
+			return '4';
+		case 5:
+			return '5';
+		case 6:
+			return '6';
+		case 7:
+			return '7';
+		case 8:
+			return '8';
+		default:
+			return '9';
+	}
+};
+var _user$project$PhoneNumber$intListToString = function (intList) {
+	var _p1 = intList;
+	if (_p1.ctor === '[]') {
+		return '';
+	} else {
+		return A2(
+			_elm_lang$core$Basics_ops['++'],
+			_user$project$PhoneNumber$intToString(_p1._0),
+			_user$project$PhoneNumber$intListToString(_p1._1));
+	}
+};
+var _user$project$PhoneNumber$toString = function (phoneNumber) {
+	var _p2 = {
+		ctor: '_Tuple2',
+		_0: A2(_elm_lang$core$List$take, 3, phoneNumber),
+		_1: A2(_elm_lang$core$List$drop, 3, phoneNumber)
+	};
+	var first = _p2._0;
+	var last = _p2._1;
+	return A2(
+		_elm_lang$core$Basics_ops['++'],
+		_user$project$PhoneNumber$intListToString(first),
+		A2(
+			_elm_lang$core$Basics_ops['++'],
+			'-',
+			_user$project$PhoneNumber$intListToString(last)));
+};
+var _user$project$PhoneNumber$adjacentDigits = function ($int) {
+	var _p3 = $int;
+	switch (_p3) {
+		case 0:
+			return {
+				ctor: '::',
+				_0: 8,
+				_1: {ctor: '[]'}
+			};
+		case 1:
+			return {
+				ctor: '::',
+				_0: 2,
+				_1: {
+					ctor: '::',
+					_0: 4,
+					_1: {ctor: '[]'}
+				}
+			};
+		case 2:
+			return {
+				ctor: '::',
+				_0: 1,
+				_1: {
+					ctor: '::',
+					_0: 3,
+					_1: {
+						ctor: '::',
+						_0: 5,
+						_1: {ctor: '[]'}
+					}
+				}
+			};
+		case 3:
+			return {
+				ctor: '::',
+				_0: 2,
+				_1: {
+					ctor: '::',
+					_0: 6,
+					_1: {ctor: '[]'}
+				}
+			};
+		case 4:
+			return {
+				ctor: '::',
+				_0: 1,
+				_1: {
+					ctor: '::',
+					_0: 5,
+					_1: {
+						ctor: '::',
+						_0: 7,
+						_1: {ctor: '[]'}
+					}
+				}
+			};
+		case 5:
+			return {
+				ctor: '::',
+				_0: 2,
+				_1: {
+					ctor: '::',
+					_0: 4,
+					_1: {
+						ctor: '::',
+						_0: 6,
+						_1: {
+							ctor: '::',
+							_0: 8,
+							_1: {ctor: '[]'}
+						}
+					}
+				}
+			};
+		case 6:
+			return {
+				ctor: '::',
+				_0: 3,
+				_1: {
+					ctor: '::',
+					_0: 5,
+					_1: {
+						ctor: '::',
+						_0: 9,
+						_1: {ctor: '[]'}
+					}
+				}
+			};
+		case 7:
+			return {
+				ctor: '::',
+				_0: 4,
+				_1: {
+					ctor: '::',
+					_0: 8,
+					_1: {ctor: '[]'}
+				}
+			};
+		case 8:
+			return {
+				ctor: '::',
+				_0: 5,
+				_1: {
+					ctor: '::',
+					_0: 7,
+					_1: {
+						ctor: '::',
+						_0: 9,
+						_1: {ctor: '[]'}
+					}
+				}
+			};
+		default:
+			return {
+				ctor: '::',
+				_0: 6,
+				_1: {
+					ctor: '::',
+					_0: 8,
+					_1: {ctor: '[]'}
+				}
+			};
+	}
+};
+var _user$project$PhoneNumber$allAdjacentsHelp = F3(
+	function (allNumbers, numberSoFar, currentDigit) {
+		return (_elm_lang$core$Native_Utils.cmp(
+			_elm_lang$core$List$length(numberSoFar),
+			7) > -1) ? A2(
+			_elm_lang$core$Basics_ops['++'],
+			allNumbers,
+			{
+				ctor: '::',
+				_0: numberSoFar,
+				_1: {ctor: '[]'}
+			}) : _elm_lang$core$List$concat(
+			A2(
+				_elm_lang$core$List$map,
+				A2(
+					_user$project$PhoneNumber$allAdjacentsHelp,
+					allNumbers,
+					A2(
+						_elm_lang$core$Basics_ops['++'],
+						numberSoFar,
+						{
+							ctor: '::',
+							_0: currentDigit,
+							_1: {ctor: '[]'}
+						})),
+				_user$project$PhoneNumber$adjacentDigits(currentDigit)));
+	});
+var _user$project$PhoneNumber$allAdjacents = _elm_lang$core$List$concat(
+	A2(
+		_elm_lang$core$List$map,
+		A2(
+			_user$project$PhoneNumber$allAdjacentsHelp,
+			{ctor: '[]'},
+			{ctor: '[]'}),
+		{
+			ctor: '::',
+			_0: 0,
+			_1: {
+				ctor: '::',
+				_0: 1,
+				_1: {
+					ctor: '::',
+					_0: 2,
+					_1: {
+						ctor: '::',
+						_0: 3,
+						_1: {
+							ctor: '::',
+							_0: 4,
+							_1: {
+								ctor: '::',
+								_0: 5,
+								_1: {
+									ctor: '::',
+									_0: 6,
+									_1: {
+										ctor: '::',
+										_0: 7,
+										_1: {
+											ctor: '::',
+											_0: 8,
+											_1: {
+												ctor: '::',
+												_0: 9,
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}));

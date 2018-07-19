@@ -1,0 +1,132 @@
+var _user$project$DesignSystem_Primitives_Typography$fontSize = function (size) {
+	var _p0 = size;
+	switch (_p0.ctor) {
+		case 'FontSizeXS':
+			return 10;
+		case 'FontSizeS':
+			return 14;
+		case 'FontSizeM':
+			return 20;
+		default:
+			return 28;
+	}
+};
+var _user$project$DesignSystem_Primitives_Typography$InterfaceSLight = {ctor: 'InterfaceSLight'};
+var _user$project$DesignSystem_Primitives_Typography$InterfaceSDark = {ctor: 'InterfaceSDark'};
+var _user$project$DesignSystem_Primitives_Typography$ParagraphS = {ctor: 'ParagraphS'};
+var _user$project$DesignSystem_Primitives_Typography$HeaderM = {ctor: 'HeaderM'};
+var _user$project$DesignSystem_Primitives_Typography$HeaderL = {ctor: 'HeaderL'};
+var _user$project$DesignSystem_Primitives_Typography$FontSizeL = {ctor: 'FontSizeL'};
+var _user$project$DesignSystem_Primitives_Typography$FontSizeM = {ctor: 'FontSizeM'};
+var _user$project$DesignSystem_Primitives_Typography$FontSizeS = {ctor: 'FontSizeS'};
+var _user$project$DesignSystem_Primitives_Typography$withTypography = F2(
+	function (typeStyle, attributes) {
+		var sans1 = {
+			ctor: '::',
+			_0: _mdgriffith$stylish_elephants$Element_Font$family(
+				{
+					ctor: '::',
+					_0: _mdgriffith$stylish_elephants$Element_Font$typeface('Lato'),
+					_1: {
+						ctor: '::',
+						_0: _mdgriffith$stylish_elephants$Element_Font$sansSerif,
+						_1: {ctor: '[]'}
+					}
+				}),
+			_1: {ctor: '[]'}
+		};
+		var attributesToAdd = function () {
+			var _p1 = typeStyle;
+			switch (_p1.ctor) {
+				case 'HeaderL':
+					return A2(
+						_elm_lang$core$Basics_ops['++'],
+						{
+							ctor: '::',
+							_0: _mdgriffith$stylish_elephants$Element_Font$size(
+								_user$project$DesignSystem_Primitives_Typography$fontSize(_user$project$DesignSystem_Primitives_Typography$FontSizeS)),
+							_1: {
+								ctor: '::',
+								_0: _mdgriffith$stylish_elephants$Element_Font$bold,
+								_1: {
+									ctor: '::',
+									_0: _mdgriffith$stylish_elephants$Element_Font$letterSpacing(0.5),
+									_1: {
+										ctor: '::',
+										_0: _mdgriffith$stylish_elephants$Element_Font$color(
+											_user$project$DesignSystem_Primitives_Color$color(_user$project$DesignSystem_Primitives_Color$MediumGrayColor)),
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						},
+						sans1);
+				case 'HeaderM':
+					return A2(
+						_elm_lang$core$Basics_ops['++'],
+						{
+							ctor: '::',
+							_0: _mdgriffith$stylish_elephants$Element_Font$size(
+								_user$project$DesignSystem_Primitives_Typography$fontSize(_user$project$DesignSystem_Primitives_Typography$FontSizeM)),
+							_1: {
+								ctor: '::',
+								_0: _mdgriffith$stylish_elephants$Element_Font$bold,
+								_1: {
+									ctor: '::',
+									_0: _mdgriffith$stylish_elephants$Element_Font$color(
+										_user$project$DesignSystem_Primitives_Color$color(_user$project$DesignSystem_Primitives_Color$DarkColor)),
+									_1: {ctor: '[]'}
+								}
+							}
+						},
+						sans1);
+				case 'ParagraphS':
+					return A2(
+						_elm_lang$core$Basics_ops['++'],
+						{
+							ctor: '::',
+							_0: _mdgriffith$stylish_elephants$Element_Font$size(
+								_user$project$DesignSystem_Primitives_Typography$fontSize(_user$project$DesignSystem_Primitives_Typography$FontSizeS)),
+							_1: {
+								ctor: '::',
+								_0: _mdgriffith$stylish_elephants$Element_Font$color(
+									_user$project$DesignSystem_Primitives_Color$color(_user$project$DesignSystem_Primitives_Color$MediumGrayColor)),
+								_1: {ctor: '[]'}
+							}
+						},
+						sans1);
+				case 'InterfaceSDark':
+					return A2(
+						_elm_lang$core$Basics_ops['++'],
+						{
+							ctor: '::',
+							_0: _mdgriffith$stylish_elephants$Element_Font$size(
+								_user$project$DesignSystem_Primitives_Typography$fontSize(_user$project$DesignSystem_Primitives_Typography$FontSizeS)),
+							_1: {
+								ctor: '::',
+								_0: _mdgriffith$stylish_elephants$Element_Font$color(
+									_user$project$DesignSystem_Primitives_Color$color(_user$project$DesignSystem_Primitives_Color$DarkColor)),
+								_1: {ctor: '[]'}
+							}
+						},
+						sans1);
+				default:
+					return A2(
+						_elm_lang$core$Basics_ops['++'],
+						{
+							ctor: '::',
+							_0: _mdgriffith$stylish_elephants$Element_Font$size(
+								_user$project$DesignSystem_Primitives_Typography$fontSize(_user$project$DesignSystem_Primitives_Typography$FontSizeS)),
+							_1: {
+								ctor: '::',
+								_0: _mdgriffith$stylish_elephants$Element_Font$color(
+									_user$project$DesignSystem_Primitives_Color$color(_user$project$DesignSystem_Primitives_Color$LightColor)),
+								_1: {ctor: '[]'}
+							}
+						},
+						sans1);
+			}
+		}();
+		return A2(_elm_lang$core$Basics_ops['++'], attributes, attributesToAdd);
+	});
+var _user$project$DesignSystem_Primitives_Typography$FontSizeXS = {ctor: 'FontSizeXS'};

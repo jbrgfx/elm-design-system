@@ -1,0 +1,25 @@
+var _user$project$DesignSystem_Components_Button$buttonView = function (buttonText) {
+	return A2(
+		_mdgriffith$stylish_elephants$Element$el,
+		A2(
+			_user$project$DesignSystem_Tokens_Typography$withTypography,
+			_user$project$DesignSystem_Tokens_Typography$InterfaceSLight,
+			{
+				ctor: '::',
+				_0: _mdgriffith$stylish_elephants$Element_Background$color(
+					_user$project$DesignSystem_Tokens_Color$color(_user$project$DesignSystem_Tokens_Color$ActionColor)),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_mdgriffith$stylish_elephants$Element$paddingXY,
+						_user$project$DesignSystem_Tokens_Space$space(_user$project$DesignSystem_Tokens_Space$SpaceL),
+						_user$project$DesignSystem_Tokens_Space$space(_user$project$DesignSystem_Tokens_Space$SpaceM)),
+					_1: {
+						ctor: '::',
+						_0: _mdgriffith$stylish_elephants$Element_Border$rounded(4),
+						_1: {ctor: '[]'}
+					}
+				}
+			}),
+		_mdgriffith$stylish_elephants$Element$text(buttonText));
+};

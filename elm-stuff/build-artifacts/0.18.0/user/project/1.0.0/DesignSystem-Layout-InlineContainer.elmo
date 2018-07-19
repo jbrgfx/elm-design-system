@@ -1,0 +1,62 @@
+var _user$project$DesignSystem_Layout_InlineContainer$inlineContainer = F3(
+	function (items, spacingX, spacingY) {
+		var childAttributes = _mdgriffith$stylish_elephants$Element$htmlAttribute(
+			_elm_lang$html$Html_Attributes$style(
+				{
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'display', _1: 'inline-block'},
+					_1: {
+						ctor: '::',
+						_0: {
+							ctor: '_Tuple2',
+							_0: 'margin-right',
+							_1: A2(
+								_elm_lang$core$Basics_ops['++'],
+								_elm_lang$core$Basics$toString(spacingX),
+								'px')
+						},
+						_1: {
+							ctor: '::',
+							_0: {
+								ctor: '_Tuple2',
+								_0: 'margin-bottom',
+								_1: A2(
+									_elm_lang$core$Basics_ops['++'],
+									_elm_lang$core$Basics$toString(spacingY),
+									'px')
+							},
+							_1: {ctor: '[]'}
+						}
+					}
+				}));
+		var parentAttributes = _mdgriffith$stylish_elephants$Element$htmlAttribute(
+			_elm_lang$html$Html_Attributes$style(
+				{
+					ctor: '::',
+					_0: {
+						ctor: '_Tuple2',
+						_0: 'margin-bottom',
+						_1: A2(
+							_elm_lang$core$Basics_ops['++'],
+							_elm_lang$core$Basics$toString(spacingY * -1),
+							'px')
+					},
+					_1: {ctor: '[]'}
+				}));
+		return A2(
+			_mdgriffith$stylish_elephants$Element$row,
+			{
+				ctor: '::',
+				_0: parentAttributes,
+				_1: {ctor: '[]'}
+			},
+			A2(
+				_elm_lang$core$List$map,
+				_mdgriffith$stylish_elephants$Element$el(
+					{
+						ctor: '::',
+						_0: childAttributes,
+						_1: {ctor: '[]'}
+					}),
+				items));
+	});

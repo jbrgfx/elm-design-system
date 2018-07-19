@@ -1,0 +1,161 @@
+var _user$project$DesignSystem_Components_Card$cardView = function (card) {
+	var tagsView = A2(
+		_mdgriffith$stylish_elephants$Element$el,
+		{ctor: '[]'},
+		A3(
+			_user$project$DesignSystem_Layout_InlineContainer$inlineContainer,
+			A2(_elm_lang$core$List$map, _user$project$DesignSystem_Components_Tag$tagView, card.tags),
+			_user$project$DesignSystem_Tokens_Space$space(_user$project$DesignSystem_Tokens_Space$SpaceS),
+			_user$project$DesignSystem_Tokens_Space$space(_user$project$DesignSystem_Tokens_Space$SpaceS)));
+	var descriptionView = A2(
+		_mdgriffith$stylish_elephants$Element$el,
+		A2(
+			_user$project$DesignSystem_Tokens_Typography$withTypography,
+			_user$project$DesignSystem_Tokens_Typography$ParagraphS,
+			{ctor: '[]'}),
+		A2(
+			_mdgriffith$stylish_elephants$Element$paragraph,
+			{ctor: '[]'},
+			{
+				ctor: '::',
+				_0: _mdgriffith$stylish_elephants$Element$text(card.description),
+				_1: {ctor: '[]'}
+			}));
+	var titleView = A2(
+		_mdgriffith$stylish_elephants$Element$el,
+		A2(
+			_user$project$DesignSystem_Tokens_Typography$withTypography,
+			_user$project$DesignSystem_Tokens_Typography$HeaderM,
+			{ctor: '[]'}),
+		_mdgriffith$stylish_elephants$Element$text(card.title));
+	var categoryView = A2(
+		_mdgriffith$stylish_elephants$Element$el,
+		A2(
+			_user$project$DesignSystem_Tokens_Typography$withTypography,
+			_user$project$DesignSystem_Tokens_Typography$HeaderL,
+			{ctor: '[]'}),
+		_mdgriffith$stylish_elephants$Element$text(
+			_elm_lang$core$String$toUpper(card.category)));
+	var bodyView = A2(
+		_mdgriffith$stylish_elephants$Element$el,
+		{
+			ctor: '::',
+			_0: _mdgriffith$stylish_elephants$Element$width(_mdgriffith$stylish_elephants$Element$fill),
+			_1: {
+				ctor: '::',
+				_0: _mdgriffith$stylish_elephants$Element_Background$color(
+					_user$project$DesignSystem_Tokens_Color$color(_user$project$DesignSystem_Tokens_Color$LightBGColor)),
+				_1: {
+					ctor: '::',
+					_0: _mdgriffith$stylish_elephants$Element$padding(
+						_user$project$DesignSystem_Tokens_Space$space(_user$project$DesignSystem_Tokens_Space$SpaceM)),
+					_1: {ctor: '[]'}
+				}
+			}
+		},
+		A2(
+			_mdgriffith$stylish_elephants$Element$column,
+			{
+				ctor: '::',
+				_0: _mdgriffith$stylish_elephants$Element$spacing(
+					_user$project$DesignSystem_Tokens_Space$space(_user$project$DesignSystem_Tokens_Space$SpaceM)),
+				_1: {ctor: '[]'}
+			},
+			{
+				ctor: '::',
+				_0: A2(
+					_mdgriffith$stylish_elephants$Element$column,
+					{
+						ctor: '::',
+						_0: _mdgriffith$stylish_elephants$Element$spacing(
+							_user$project$DesignSystem_Tokens_Space$space(_user$project$DesignSystem_Tokens_Space$SpaceS)),
+						_1: {ctor: '[]'}
+					},
+					{
+						ctor: '::',
+						_0: categoryView,
+						_1: {
+							ctor: '::',
+							_0: titleView,
+							_1: {ctor: '[]'}
+						}
+					}),
+				_1: {
+					ctor: '::',
+					_0: descriptionView,
+					_1: {
+						ctor: '::',
+						_0: tagsView,
+						_1: {
+							ctor: '::',
+							_0: _user$project$DesignSystem_Components_Button$buttonView('View'),
+							_1: {ctor: '[]'}
+						}
+					}
+				}
+			}));
+	var thumbnailView = A2(
+		_mdgriffith$stylish_elephants$Element$el,
+		{
+			ctor: '::',
+			_0: _mdgriffith$stylish_elephants$Element$width(_mdgriffith$stylish_elephants$Element$fill),
+			_1: {
+				ctor: '::',
+				_0: _mdgriffith$stylish_elephants$Element$height(
+					_mdgriffith$stylish_elephants$Element$px(200)),
+				_1: {
+					ctor: '::',
+					_0: _mdgriffith$stylish_elephants$Element_Background$image(card.thumbnailUrl),
+					_1: {ctor: '[]'}
+				}
+			}
+		},
+		_mdgriffith$stylish_elephants$Element$none);
+	return A2(
+		_mdgriffith$stylish_elephants$Element$column,
+		{
+			ctor: '::',
+			_0: _mdgriffith$stylish_elephants$Element$width(_mdgriffith$stylish_elephants$Element$fill),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: thumbnailView,
+			_1: {
+				ctor: '::',
+				_0: bodyView,
+				_1: {ctor: '[]'}
+			}
+		});
+};
+var _user$project$DesignSystem_Components_Card$cardsView = function (cards) {
+	return A4(
+		_user$project$DesignSystem_Layout_Grid$grid,
+		3,
+		_user$project$DesignSystem_Tokens_Space$space(_user$project$DesignSystem_Tokens_Space$SpaceL),
+		_user$project$DesignSystem_Tokens_Space$space(_user$project$DesignSystem_Tokens_Space$SpaceL),
+		A2(_elm_lang$core$List$map, _user$project$DesignSystem_Components_Card$cardView, cards));
+};
+var _user$project$DesignSystem_Components_Card$dummyCard = {
+	category: 'Video',
+	thumbnailUrl: 'https://upload.wikimedia.org/wikipedia/commons/0/00/Crab_Nebula.jpg',
+	title: 'Supernova',
+	description: 'An astronomical event that occurs during the last stages of a massive star\'s life.',
+	tags: {
+		ctor: '::',
+		_0: {name: 'Galaxies', id: 1},
+		_1: {
+			ctor: '::',
+			_0: {name: 'Milky Way', id: 2},
+			_1: {
+				ctor: '::',
+				_0: {name: 'Speed of Light', id: 3},
+				_1: {ctor: '[]'}
+			}
+		}
+	}
+};
+var _user$project$DesignSystem_Components_Card$Card = F5(
+	function (a, b, c, d, e) {
+		return {category: a, thumbnailUrl: b, title: c, description: d, tags: e};
+	});
