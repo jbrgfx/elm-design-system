@@ -89,7 +89,7 @@ cardView card =
                 ([]
                     |> withTypography ParagraphS
                 )
-                (paragraph []
+                (paragraph [ width fill ]
                     [ (text card.description) ]
                 )
 

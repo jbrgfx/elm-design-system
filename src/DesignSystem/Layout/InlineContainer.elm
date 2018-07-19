@@ -12,6 +12,7 @@ inlineContainer items spacingX spacingY =
         parentAttributes =
             Html.Attributes.style
                 [ ( "margin-bottom", (toString <| spacingY * -1) ++ "px" )
+                , ( "width", "100%" )
                 ]
                 |> htmlAttribute
 
@@ -23,5 +24,5 @@ inlineContainer items spacingX spacingY =
                 ]
                 |> htmlAttribute
     in
-        row [ parentAttributes ]
+        paragraph [ parentAttributes, width fill ]
             (List.map (el [ childAttributes ]) items)
