@@ -7,6 +7,7 @@ import DesignSystem.Tokens.Space as Space exposing (space, Token(..))
 import DesignSystem.Tokens.Typography as Typography exposing (withTypography, Token(..))
 import DesignSystem.Layout.Grid exposing (grid)
 import DesignSystem.Layout.InlineContainer exposing (inlineContainer)
+import DesignSystem.Layout.TextBlock exposing (textBlock)
 import Element exposing (..)
 import Element.Background as Background
 import Element.Border as Border
@@ -33,12 +34,6 @@ dummyCard =
         , { name = "Speed of Light", id = 3 }
         ]
     }
-
-
-cardsView : List Card -> Element msg
-cardsView cards =
-    List.map cardView cards
-        |> grid 3 (space SpaceL) (space SpaceL)
 
 
 cardView : Card -> Element msg
@@ -71,31 +66,22 @@ cardView card =
                 )
 
         categoryView =
-            el
-                ([]
-                    |> withTypography HeaderL
-                )
-                (text (String.toUpper card.category))
+            textBlock
+                ([] |> withTypography HeaderL)
+                [ text <| String.toUpper card.category ]
 
         titleView =
-            el
-                ([]
-                    |> withTypography HeaderM
-                )
-                (text card.title)
+            textBlock
+                ([] |> withTypography HeaderM)
+                [ text card.title ]
 
         descriptionView =
-            el
-                ([]
-                    |> withTypography ParagraphS
-                )
-                (paragraph [ width fill ]
-                    [ (text card.description) ]
-                )
+            textBlock
+                ([] |> withTypography ParagraphS)
+                [ text card.description ]
 
         tagsView =
-            el []
-                (inlineContainer (List.map tagView card.tags) (space SpaceS) (space SpaceS))
+            inlineContainer (List.map tagView card.tags) (space SpaceS) (space SpaceS)
     in
         column [ width fill ]
             [ thumbnailView

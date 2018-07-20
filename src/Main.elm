@@ -5,6 +5,7 @@ import Html exposing (Html)
 import DesignSystem.Tokens.Color as Color exposing (color, Token(..))
 import DesignSystem.Tokens.Space as Space exposing (space, Token(..))
 import DesignSystem.Tokens.Typography as Typography exposing (withTypography, Token(..))
+import DesignSystem.Layout.Grid exposing (grid)
 import Element exposing (..)
 import Element.Background as Background
 import Element.Font as Font
@@ -45,7 +46,18 @@ view model =
         [ padding (space SpaceXL)
         , Background.color (color DarkBGColor)
         ]
-        (cardsView cards)
+        (el
+            [ width fill
+            , alignTop
+            ]
+            (cardsView cards)
+        )
+
+
+cardsView : List Card -> Element msg
+cardsView cards =
+    List.map cardView cards
+        |> grid 3 (space SpaceL) (space SpaceL)
 
 
 cards : List Card
