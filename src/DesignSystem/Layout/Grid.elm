@@ -4,7 +4,6 @@ import Html
 import Html.Attributes
 import DesignSystem.Tokens.Space as Space exposing (space, Token(..))
 import Element exposing (..)
-import List.Extra
 
 
 grid : Int -> Int -> Int -> List (Element msg) -> Element msg

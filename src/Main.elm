@@ -9,7 +9,6 @@ import Element exposing (..)
 import Element.Background as Background
 import Element.Font as Font
 import Element.Border as Border
-import List.Extra
 
 
 main : Program Never Model Msg
