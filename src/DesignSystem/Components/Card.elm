@@ -1,16 +1,12 @@
 module DesignSystem.Components.Card exposing (..)
 
+import DesignSystem.Theme exposing (..)
+import DesignSystem.Components.Headers exposing (..)
 import DesignSystem.Components.Tag exposing (..)
 import DesignSystem.Components.Button exposing (..)
-import DesignSystem.Tokens.Color as Color exposing (color, Token(..))
-import DesignSystem.Tokens.Space as Space exposing (space, Token(..))
-import DesignSystem.Tokens.Typography as Typography exposing (withTypography, Token(..))
-import DesignSystem.Layout.Grid exposing (grid)
 import DesignSystem.Layout.InlineContainer exposing (inlineContainer)
-import DesignSystem.Layout.TextBlock exposing (textBlock)
 import Element exposing (..)
 import Element.Background as Background
-import Element.Border as Border
 
 
 type alias Card =
@@ -36,8 +32,8 @@ dummyCard =
     }
 
 
-cardView : Card -> Element msg
-cardView card =
+cardView : Theme -> Card -> Element msg
+cardView theme card =
     let
         thumbnailView =
             el
@@ -50,38 +46,36 @@ cardView card =
         bodyView =
             el
                 [ width fill
-                , Background.color (color LightBGColor)
-                , padding (space SpaceM)
+                , Background.color (colorFor theme "cardBg")
+                , paddingXY
+                    (spaceFor theme "cardPaddingX")
+                    (spaceFor theme "cardPaddingY")
                 ]
-                (column [ spacing (space SpaceM) ]
-                    [ (column [ spacing (space SpaceS) ]
+                (column [ spacing (spaceFor theme "cardContentSpacing") ]
+                    [ (column [ spacing (spaceFor theme "cardHeaderSpacing") ]
                         [ categoryView
                         , titleView
                         ]
                       )
                     , descriptionView
                     , tagsView
-                    , buttonView "View"
+                    , buttonView theme "View"
                     ]
                 )
 
         categoryView =
-            textBlock
-                ([] |> withTypography HeaderL)
-                [ text <| String.toUpper card.category ]
+            header3 theme card.category
 
         titleView =
-            textBlock
-                ([] |> withTypography HeaderM)
-                [ text card.title ]
+            header4 theme card.title
 
         descriptionView =
-            textBlock
-                ([] |> withTypography ParagraphS)
-                [ text card.description ]
+            bodyText theme card.description
 
         tagsView =
-            inlineContainer (List.map tagView card.tags) (space SpaceS) (space SpaceS)
+            inlineContainer (List.map (tagView theme) card.tags)
+                (spaceFor theme "tagsSpacingX")
+                (spaceFor theme "tagsSpacingY")
     in
         column [ width fill ]
             [ thumbnailView

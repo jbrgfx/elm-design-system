@@ -1,20 +1,23 @@
 module DesignSystem.Components.Button exposing (..)
 
-import DesignSystem.Tokens.Color as Color exposing (color, Token(..))
-import DesignSystem.Tokens.Space as Space exposing (space, Token(..))
-import DesignSystem.Tokens.Typography as Typography exposing (withTypography, Token(..))
+import DesignSystem.Theme exposing (..)
 import Element exposing (..)
 import Element.Background as Background
 import Element.Border as Border
+import Element.Font as Font
 
 
-buttonView : String -> Element msg
-buttonView buttonText =
+buttonView : Theme -> String -> Element msg
+buttonView theme buttonText =
     el
-        ([ Background.color (color ActionColor)
-         , paddingXY (space SpaceL) (space SpaceM)
-         , Border.rounded 4
+        ([ Background.color (colorFor theme "primaryButton")
+         , paddingXY
+            (spaceFor theme "primaryButtonPaddingX")
+            (spaceFor theme "primaryButtonPaddingY")
+         , Border.rounded (borderRadiusFor theme "primaryButton")
+         , Font.family (typeFaceFor theme "primaryButton")
+         , Font.size (typeSizeFor theme "primaryButton")
+         , Font.color (colorFor theme "primaryButtonText")
          ]
-            |> withTypography InterfaceSLight
         )
         (text buttonText)

@@ -1,8 +1,6 @@
 module DesignSystem.Layout.Grid exposing (..)
 
-import Html
 import Html.Attributes
-import DesignSystem.Tokens.Space as Space exposing (space, Token(..))
 import Element exposing (..)
 
 

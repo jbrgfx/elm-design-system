@@ -1,15 +1,11 @@
 module Main exposing (..)
 
+import DesignSystem.Theme as Theme exposing (..)
 import DesignSystem.Components.Card exposing (..)
 import Html exposing (Html)
-import DesignSystem.Tokens.Color as Color exposing (color, Token(..))
-import DesignSystem.Tokens.Space as Space exposing (space, Token(..))
-import DesignSystem.Tokens.Typography as Typography exposing (withTypography, Token(..))
 import DesignSystem.Layout.Grid exposing (grid)
 import Element exposing (..)
 import Element.Background as Background
-import Element.Font as Font
-import Element.Border as Border
 
 
 main : Program Never Model Msg
@@ -23,7 +19,7 @@ main =
 
 
 type alias Model =
-    {}
+    { theme : Theme }
 
 
 type Msg
@@ -32,7 +28,10 @@ type Msg
 
 init : ( Model, Cmd Msg )
 init =
-    ( {}, Cmd.none )
+    ( { theme = Theme.default
+      }
+    , Cmd.none
+    )
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -42,22 +41,28 @@ update msg model =
 
 view : Model -> Html Msg
 view model =
-    Element.layout
-        [ padding (space SpaceXL)
-        , Background.color (color DarkBGColor)
-        ]
-        (el
-            [ width fill
-            , alignTop
+    let
+        theme =
+            model.theme
+    in
+        Element.layout
+            [ padding (spaceFor theme "pagePadding")
+            , Background.color (colorFor theme "pageBg")
             ]
-            (cardsView cards)
-        )
+            (el
+                [ width fill
+                , alignTop
+                ]
+                (cardsView theme cards)
+            )
 
 
-cardsView : List Card -> Element msg
-cardsView cards =
-    List.map cardView cards
-        |> grid 3 (space SpaceL) (space SpaceL)
+cardsView : Theme -> List Card -> Element msg
+cardsView theme cards =
+    List.map (cardView theme) cards
+        |> grid 3
+            (spaceFor theme "cardsSpacingX")
+            (spaceFor theme "cardsSpacingY")
 
 
 cards : List Card

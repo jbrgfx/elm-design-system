@@ -1,11 +1,10 @@
 module DesignSystem.Components.Tag exposing (..)
 
-import DesignSystem.Tokens.Color as Color exposing (color, Token(..))
-import DesignSystem.Tokens.Space as Space exposing (space, Token(..))
-import DesignSystem.Tokens.Typography as Typography exposing (withTypography, Token(..))
+import DesignSystem.Theme exposing (..)
 import Element exposing (..)
 import Element.Background as Background
 import Element.Border as Border
+import Element.Font as Font
 
 
 type alias Tag =
@@ -14,13 +13,17 @@ type alias Tag =
     }
 
 
-tagView : Tag -> Element msg
-tagView tag =
+tagView : Theme -> Tag -> Element msg
+tagView theme tag =
     el
-        ([ Background.color (color MediumBGColor)
-         , padding (space SpaceS)
-         , Border.rounded 4
+        ([ Background.color (colorFor theme "tagBg")
+         , paddingXY
+            (spaceFor theme "tagPaddingX")
+            (spaceFor theme "tagPaddingY")
+         , Border.rounded (borderRadiusFor theme "tag")
+         , Font.family (typeFaceFor theme "tag")
+         , Font.size (typeSizeFor theme "tag")
+         , Font.color (colorFor theme "tagText")
          ]
-            |> withTypography InterfaceSDark
         )
         (text tag.name)
