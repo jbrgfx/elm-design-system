@@ -1,5 +1,6 @@
 module DesignSystem.Components.Card exposing (..)
 
+import DesignSystem.Tokens exposing (..)
 import DesignSystem.Theme exposing (..)
 import DesignSystem.Components.Headers exposing (..)
 import DesignSystem.Components.Tag exposing (..)
@@ -29,6 +30,27 @@ dummyCard =
         , { name = "Milky Way", id = 2 }
         , { name = "Speed of Light", id = 3 }
         ]
+    }
+
+
+defaultThemeMappings : ThemeMappings
+defaultThemeMappings =
+    { colors =
+        [ ( "cardBg", mapToKey "gray-l2" )
+        ]
+    , spaces =
+        [ ( "cardPaddingX", mapToKey "m" )
+        , ( "cardPaddingY", mapToKey "m" )
+        , ( "cardsSpacingX", mapToKey "l" )
+        , ( "cardsSpacingY", mapToKey "l" )
+        , ( "cardContentSpacing", mapToKey "m" )
+        , ( "cardHeaderSpacing", mapToKey "s" )
+        ]
+    , typeSizes = []
+    , typeFaces = []
+    , typeWeights = []
+    , typeTrackings = []
+    , borderRadii = []
     }
 
 

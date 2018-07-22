@@ -1,4 +1,11 @@
-module DesignSystem.Tokens exposing (valueForKey, mapToKey, hasValue, Tokens(..))
+module DesignSystem.Tokens
+    exposing
+        ( valueForKey
+        , Mappings
+        , mapToKey
+        , hasValue
+        , Tokens(..)
+        )
 
 import Dict exposing (Dict)
 
@@ -18,6 +25,10 @@ type MappingOrValue a
 
 type alias ValuesLookup a =
     Dict String a
+
+
+type alias Mappings a =
+    List ( String, MappingOrValue a )
 
 
 mapToKey : String -> MappingOrValue a

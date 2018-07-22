@@ -1,6 +1,6 @@
 module DesignSystem.Tokens.Typography.Weight exposing (..)
 
-import DesignSystem.Tokens exposing (Tokens(..), mapToKey, hasValue, valueForKey)
+import DesignSystem.Tokens exposing (..)
 import Element exposing (Attribute)
 import Element.Font as Font
 import Dict
@@ -18,17 +18,11 @@ type Weight
     | Hairline
 
 
-defaultTypeWeightTokens : Tokens Weight
-defaultTypeWeightTokens =
+defaultTypeWeightTokens : Mappings Weight -> Tokens Weight
+defaultTypeWeightTokens mappings =
     let
         mappingsLookup =
-            Dict.fromList
-                [ ( "header3", mapToKey "bold" )
-                , ( "header4", mapToKey "bold" )
-                , ( "paragraph", mapToKey "regular" )
-                , ( "tag", mapToKey "regular" )
-                , ( "primaryButton", mapToKey "regular" )
-                ]
+            Dict.fromList mappings
 
         valuesLookup =
             Dict.fromList

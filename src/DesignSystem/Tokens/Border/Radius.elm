@@ -1,17 +1,14 @@
 module DesignSystem.Tokens.Border.Radius exposing (..)
 
-import DesignSystem.Tokens exposing (Tokens(..), mapToKey, hasValue, valueForKey)
+import DesignSystem.Tokens exposing (..)
 import Dict
 
 
-defaultBorderRadiusTokens : Tokens Int
-defaultBorderRadiusTokens =
+defaultBorderRadiusTokens : Mappings Int -> Tokens Int
+defaultBorderRadiusTokens mappings =
     let
         mappingsLookup =
-            Dict.fromList
-                [ ( "tag", mapToKey "medium" )
-                , ( "primaryButton", mapToKey "medium" )
-                ]
+            Dict.fromList mappings
 
         valuesLookup =
             Dict.fromList

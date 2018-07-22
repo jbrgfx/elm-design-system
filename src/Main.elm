@@ -1,7 +1,11 @@
 module Main exposing (..)
 
+import DesignSystem.Tokens exposing (..)
 import DesignSystem.Theme as Theme exposing (..)
-import DesignSystem.Components.Card exposing (..)
+import DesignSystem.Components.Card as Card exposing (..)
+import DesignSystem.Components.Button as Button
+import DesignSystem.Components.Tag as Tag
+import DesignSystem.Components.Headers as Headers exposing (..)
 import Html exposing (Html)
 import DesignSystem.Layout.Grid exposing (grid)
 import Element exposing (..)
@@ -28,10 +32,35 @@ type Msg
 
 init : ( Model, Cmd Msg )
 init =
-    ( { theme = Theme.default
+    ( { theme =
+            Theme.defaultWithMappings
+                [ pageThemeMappings
+                , Button.defaultThemeMappings
+                , Card.defaultThemeMappings
+                , Headers.header3DefaultThemeMappings
+                , Headers.header4DefaultThemeMappings
+                , Headers.bodyTextDefaultThemeMappings
+                , Tag.defaultThemeMappings
+                ]
       }
     , Cmd.none
     )
+
+
+pageThemeMappings : ThemeMappings
+pageThemeMappings =
+    { colors =
+        [ ( "pageBg", mapToKey "gray-d3" )
+        ]
+    , spaces =
+        [ ( "pagePadding", mapToKey "xl" )
+        ]
+    , typeSizes = []
+    , typeFaces = []
+    , typeWeights = []
+    , typeTrackings = []
+    , borderRadii = []
+    }
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )

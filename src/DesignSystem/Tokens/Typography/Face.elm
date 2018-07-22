@@ -1,20 +1,14 @@
 module DesignSystem.Tokens.Typography.Face exposing (..)
 
-import DesignSystem.Tokens exposing (Tokens(..), mapToKey, hasValue, valueForKey)
+import DesignSystem.Tokens exposing (..)
 import Dict
 
 
-defaultTypeFaceTokens : Tokens (List String)
-defaultTypeFaceTokens =
+defaultTypeFaceTokens : Mappings (List String) -> Tokens (List String)
+defaultTypeFaceTokens mappings =
     let
         mappingsLookup =
-            Dict.fromList
-                [ ( "header3", mapToKey "sans1" )
-                , ( "header4", mapToKey "sans1" )
-                , ( "paragraph", mapToKey "sans1" )
-                , ( "tag", mapToKey "sans1" )
-                , ( "primaryButton", mapToKey "sans1" )
-                ]
+            Dict.fromList mappings
 
         valuesLookup =
             Dict.fromList

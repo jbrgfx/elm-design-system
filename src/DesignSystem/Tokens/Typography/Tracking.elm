@@ -1,16 +1,14 @@
 module DesignSystem.Tokens.Typography.Tracking exposing (..)
 
-import DesignSystem.Tokens exposing (Tokens(..), mapToKey, hasValue, valueForKey)
+import DesignSystem.Tokens exposing (..)
 import Dict
 
 
-defaultTypeTrackingTokens : Tokens Float
-defaultTypeTrackingTokens =
+defaultTypeTrackingTokens : Mappings Float -> Tokens Float
+defaultTypeTrackingTokens mappings =
     let
         mappingsLookup =
-            Dict.fromList
-                [ ( "header3", mapToKey "loose" )
-                ]
+            Dict.fromList mappings
 
         valuesLookup =
             Dict.fromList

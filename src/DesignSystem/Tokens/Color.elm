@@ -1,25 +1,16 @@
 module DesignSystem.Tokens.Color exposing (..)
 
-import DesignSystem.Tokens exposing (Tokens(..), mapToKey, hasValue, valueForKey)
+import DesignSystem.Tokens exposing (..)
 import Dict
 import Color
 
 
-defaultColorTokens : Tokens Color.Color
-defaultColorTokens =
+defaultColorTokens : Mappings Color.Color -> Tokens Color.Color
+defaultColorTokens mappings =
     let
         mappingsLookup =
             Dict.fromList
-                [ ( "pageBg", mapToKey "gray-d3" )
-                , ( "cardBg", mapToKey "gray-l2" )
-                , ( "tagBg", mapToKey "gray" )
-                , ( "tagText", mapToKey "gray-d3" )
-                , ( "primaryButton", mapToKey "primary" )
-                , ( "primaryButtonText", mapToKey "white" )
-                , ( "header3", mapToKey "gray-d2" )
-                , ( "header4", mapToKey "black" )
-                , ( "paragraph", mapToKey "gray-d2" )
-                ]
+                mappings
 
         valuesLookup =
             Dict.fromList

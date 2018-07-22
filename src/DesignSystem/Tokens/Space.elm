@@ -1,28 +1,14 @@
 module DesignSystem.Tokens.Space exposing (..)
 
-import DesignSystem.Tokens exposing (Tokens(..), mapToKey, hasValue, valueForKey)
+import DesignSystem.Tokens exposing (..)
 import Dict
 
 
-defaultSpaceTokens : Tokens Int
-defaultSpaceTokens =
+defaultSpaceTokens : Mappings Int -> Tokens Int
+defaultSpaceTokens mappings =
     let
         mappingsLookup =
-            Dict.fromList
-                [ ( "pagePadding", mapToKey "xl" )
-                , ( "cardPaddingX", mapToKey "m" )
-                , ( "cardPaddingY", mapToKey "m" )
-                , ( "cardsSpacingX", mapToKey "l" )
-                , ( "cardsSpacingY", mapToKey "l" )
-                , ( "cardContentSpacing", mapToKey "m" )
-                , ( "cardHeaderSpacing", mapToKey "s" )
-                , ( "tagPaddingX", mapToKey "s" )
-                , ( "tagPaddingY", mapToKey "s" )
-                , ( "tagsSpacingX", mapToKey "s" )
-                , ( "tagsSpacingY", mapToKey "s" )
-                , ( "primaryButtonPaddingX", mapToKey "l" )
-                , ( "primaryButtonPaddingY", mapToKey "m" )
-                ]
+            Dict.fromList mappings
 
         valuesLookup =
             Dict.fromList

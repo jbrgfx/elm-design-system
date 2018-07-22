@@ -1,7 +1,8 @@
 module DesignSystem.Theme
     exposing
         ( Theme
-        , default
+        , ThemeMappings
+        , defaultWithMappings
         , colorFor
         , spaceFor
         , typeFaceFor
@@ -11,7 +12,7 @@ module DesignSystem.Theme
         , borderRadiusFor
         )
 
-import DesignSystem.Tokens exposing (valueForKey, Tokens(..))
+import DesignSystem.Tokens exposing (valueForKey, Tokens(..), Mappings)
 import DesignSystem.Tokens.Color exposing (defaultColorTokens)
 import DesignSystem.Tokens.Space exposing (defaultSpaceTokens)
 import DesignSystem.Tokens.Typography.Size exposing (defaultTypeSizeTokens)
@@ -35,22 +36,62 @@ type alias Theme =
     }
 
 
+type alias ThemeMappings =
+    { colors : Mappings Color.Color
+    , spaces : Mappings Int
+    , typeSizes : Mappings Int
+    , typeFaces : Mappings (List String)
+    , typeWeights : Mappings Weight
+    , typeTrackings : Mappings Float
+    , borderRadii : Mappings Int
+    }
+
+
 
 -- TODO
 -- , borderWidths : Tokens Int
 -- , shadows : Tokens Shadow
 
 
-default : Theme
-default =
-    { colors = defaultColorTokens
-    , spaces = defaultSpaceTokens
-    , typeSizes = defaultTypeSizeTokens
-    , typeFaces = defaultTypeFaceTokens
-    , typeWeights = defaultTypeWeightTokens
-    , typeTrackings = defaultTypeTrackingTokens
-    , borderRadii = defaultBorderRadiusTokens
+emptyMappings : ThemeMappings
+emptyMappings =
+    { colors = []
+    , spaces = []
+    , typeSizes = []
+    , typeFaces = []
+    , typeWeights = []
+    , typeTrackings = []
+    , borderRadii = []
     }
+
+
+concatenateMappings : ThemeMappings -> ThemeMappings -> ThemeMappings
+concatenateMappings currentMappings newMappings =
+    { currentMappings
+        | colors = currentMappings.colors ++ newMappings.colors
+        , spaces = currentMappings.spaces ++ newMappings.spaces
+        , typeSizes = currentMappings.typeSizes ++ newMappings.typeSizes
+        , typeFaces = currentMappings.typeFaces ++ newMappings.typeFaces
+        , typeWeights = currentMappings.typeWeights ++ newMappings.typeWeights
+        , typeTrackings = currentMappings.typeTrackings ++ newMappings.typeTrackings
+        , borderRadii = currentMappings.borderRadii ++ newMappings.borderRadii
+    }
+
+
+defaultWithMappings : List ThemeMappings -> Theme
+defaultWithMappings mappingsList =
+    let
+        combinedMappings =
+            List.foldl concatenateMappings emptyMappings mappingsList
+    in
+        { colors = defaultColorTokens combinedMappings.colors
+        , spaces = defaultSpaceTokens combinedMappings.spaces
+        , typeSizes = defaultTypeSizeTokens combinedMappings.typeSizes
+        , typeFaces = defaultTypeFaceTokens combinedMappings.typeFaces
+        , typeWeights = defaultTypeWeightTokens combinedMappings.typeWeights
+        , typeTrackings = defaultTypeTrackingTokens combinedMappings.typeTrackings
+        , borderRadii = defaultBorderRadiusTokens combinedMappings.borderRadii
+        }
 
 
 errorColor : Color.Color

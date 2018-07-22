@@ -1,20 +1,14 @@
 module DesignSystem.Tokens.Typography.Size exposing (..)
 
-import DesignSystem.Tokens exposing (Tokens(..), mapToKey, hasValue, valueForKey)
+import DesignSystem.Tokens exposing (..)
 import Dict
 
 
-defaultTypeSizeTokens : Tokens Int
-defaultTypeSizeTokens =
+defaultTypeSizeTokens : Mappings Int -> Tokens Int
+defaultTypeSizeTokens mappings =
     let
         mappingsLookup =
-            Dict.fromList
-                [ ( "header3", mapToKey "s" )
-                , ( "header4", mapToKey "m" )
-                , ( "paragraph", mapToKey "s" )
-                , ( "tag", mapToKey "s" )
-                , ( "primaryButton", mapToKey "s" )
-                ]
+            Dict.fromList mappings
 
         valuesLookup =
             Dict.fromList

@@ -1,5 +1,6 @@
 module DesignSystem.Components.Tag exposing (..)
 
+import DesignSystem.Tokens exposing (..)
 import DesignSystem.Theme exposing (..)
 import Element exposing (..)
 import Element.Background as Background
@@ -27,3 +28,31 @@ tagView theme tag =
          ]
         )
         (text tag.name)
+
+
+defaultThemeMappings : ThemeMappings
+defaultThemeMappings =
+    { colors =
+        [ ( "tagBg", mapToKey "gray" )
+        , ( "tagText", mapToKey "gray-d3" )
+        ]
+    , spaces =
+        [ ( "tagPaddingX", mapToKey "s" )
+        , ( "tagPaddingY", mapToKey "s" )
+        , ( "tagsSpacingX", mapToKey "s" )
+        , ( "tagsSpacingY", mapToKey "s" )
+        ]
+    , typeSizes =
+        [ ( "tag", mapToKey "s" )
+        ]
+    , typeFaces =
+        [ ( "tag", mapToKey "sans1" )
+        ]
+    , typeWeights =
+        [ ( "tag", mapToKey "regular" )
+        ]
+    , typeTrackings = []
+    , borderRadii =
+        [ ( "tag", mapToKey "medium" )
+        ]
+    }
