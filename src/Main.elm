@@ -4,6 +4,7 @@ import DesignSystem.Tokens exposing (..)
 import DesignSystem.Theme as Theme exposing (..)
 import DesignSystem.Components.Card as Card exposing (..)
 import DesignSystem.Components.Button as Button
+import DesignSystem.Components.NavRow exposing (..)
 import DesignSystem.Components.Tag as Tag
 import DesignSystem.Components.Headers as Headers exposing (..)
 import Html exposing (Html)
@@ -78,12 +79,15 @@ view model =
             [ padding (spaceFor theme "pagePadding")
             , Background.color (colorFor theme "pageBg")
             ]
-            (el
-                [ width fill
-                , alignTop
-                ]
-                (cardsView theme cards)
-            )
+            <|
+              column [] [
+                (navRowView theme "navRowText")
+              , el [ width fill
+                   , alignTop
+                 ]
+                  (cardsView theme cards)
+             , (navRowView theme "navRowText")
+            ]
 
 
 cardsView : Theme -> List Card -> Element msg
