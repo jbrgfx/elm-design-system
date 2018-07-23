@@ -4,7 +4,7 @@ import DesignSystem.Tokens exposing (..)
 import DesignSystem.Theme as Theme exposing (..)
 import DesignSystem.Components.Card as Card exposing (..)
 import DesignSystem.Components.Button as Button
-import DesignSystem.Components.NavRow exposing (..)
+import DesignSystem.Components.SectionTitle exposing (..)
 import DesignSystem.Components.Tag as Tag
 import DesignSystem.Components.Headers as Headers exposing (..)
 import Html exposing (Html)
@@ -84,12 +84,11 @@ view model =
                   (spaceFor theme "cardPaddingX")
                   (spaceFor theme "cardPaddingY")
                   ] [
-                ( navRowView theme "navRowText")
+                ( sectionTitleView theme "navRowText")
               , el [ width fill
                    , alignTop
                  ]
                   (cardsView theme cards)
-             -- , (navRowView theme "navRowText")
             ]
 
 
