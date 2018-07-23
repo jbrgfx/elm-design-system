@@ -80,13 +80,16 @@ view model =
             , Background.color (colorFor theme "pageBg")
             ]
             <|
-              column [] [
-                (navRowView theme "navRowText")
+              column [ paddingXY
+                  (spaceFor theme "cardPaddingX")
+                  (spaceFor theme "cardPaddingY")
+                  ] [
+                ( navRowView theme "navRowText")
               , el [ width fill
                    , alignTop
                  ]
                   (cardsView theme cards)
-             , (navRowView theme "navRowText")
+             -- , (navRowView theme "navRowText")
             ]
 
 
@@ -100,4 +103,4 @@ cardsView theme cards =
 
 cards : List Card
 cards =
-    List.repeat 4 dummyCard
+    List.repeat 3 dummyCard
