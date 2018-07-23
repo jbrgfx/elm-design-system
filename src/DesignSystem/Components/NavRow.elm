@@ -8,5 +8,6 @@ import Element.Font as Font
 
 navRowView : Theme -> String -> Element msg
 navRowView theme navRowText =
-  row [ Font.color (colorFor theme "primaryButtonText")
+  row [ Background.color (colorFor theme "cardBg")
+      , Font.color (colorFor theme "header4")
       ] [ text "nav row" ]
